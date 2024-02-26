@@ -1,0 +1,82 @@
+# Configurar Interface de Gerenciamento
+Entre no modo de configuração global.	
+S1# configure terminal
+Entre no modo de configuração da interface para SVI.	
+S1(config)# interface vlan 99
+Configure o endereço IPv4 da interface de gerenciamento.	
+S1(config-if)# ip address 172.17.99.11 255.255.255.0
+Configurar o endereço IPv6 da interface de gerenciamento	
+S1(config-if)# ipv6 address 2001:db8:acad:99::1/64
+Ative a interface de gerenciamento.	
+S1(config-if)# no shutdown
+Volte para o modo EXEC privilegiado.	
+S1(config-if)# end
+Salve a configuração atual na configuração de inicialização.	
+S1# copy running-config startup-config
+
+
+Configurar o gateway padrão
+Entre no modo de configuração global.	
+S1# configure terminal
+Configure o gateway padrão do switch.	
+S1(config)# ip default-gateway 172.17.99.1
+Volte para o modo EXEC privilegiado.	
+S1(config-if)# end
+Salve a configuração atual na configuração de inicialização.	
+S1# copy running-config startup-config
+
+Configurar as portas de switch
+Entre no modo de configuração global.	
+S1# configure terminal
+Entre no modo de configuração da interface.	
+S1(config)# interface FastEthernet 0/1
+Configure o duplex da interface.	
+S1(config-if)# duplex full
+Configure a velocidade da interface.	
+S1(config-if)# speed 100
+Volte para o modo EXEC privilegiado.	
+S1(config-if)# end
+Salve a configuração atual na configuração de inicialização.	
+S1# copy running-config startup-config
+
+
+Comandos de verificação de switch
+Exibir o status e a configuração da interface.	
+S1# show interfaces [interface-id]
+Exibir a configuração atual de inicialização.	
+S1# show startup-config
+Exibir a configuração atual em execução.	
+S1# show running-config
+Exibir informações sobre o sistema de arquivos da memória flash.	
+S1# show flash
+Exibir o status de hardware e software do sistema.	
+S1# show version
+Exibe o histórico do comando digitado.	
+S1# show history
+Exibir informações de IP sobre uma interface.	
+S1# show ip interface [interface-id]
+OU
+S1# show ipv6 interface [interface-id]
+Exibir a tabela de endereços MAC.	
+S1# show mac-address-table
+OU
+S1# show mac address-table
+
+
+Verificar suporte SSH
+S1# show ip ssh
+Configurar o domínio IP
+S1(config)# ip domain-name cisco.com
+Gerar pares de chaves RSA
+S1(config)# crypto key generate rsa
+Quantos bits no módulo [512]: 1024
+Configure a autenticação do usuário
+S1(config)# username admin secret ccna
+Configure as linhas vty
+S1(config)# line vty 0 15
+S1(config-line)# transport input ssh
+S1(config-line)# no password
+S1(config-line)# login local
+S1(config-line)# exit
+Ative o SSH versão 2
+S1(config)# ip ssh version 2
