@@ -118,3 +118,8 @@ R1(config-if)# description Link to R2
 R1(config-if)# no shutdown
 R1(config-if)# exit
 R1(config)#
+
+##Interfaces de Loopback IPv4
+RR1(config)# interface loopback 0
+R1(config-if)# ip address 10.0.0.1 255.255.255.0
+R1(config-if)# exit
